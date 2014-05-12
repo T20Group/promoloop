@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+    	body { margin:0; padding:0; }
+		#myvideo { height:1080px; width:1920px;}
+    </style>
+</head>
+ <body>
+ 	<video autoplay id="myVideo" >
+  
+   </video>
+   
+   <script>
+    var videoSource = new Array();
+	videoSource[0]='video/astoria_facade.webm';
+	videoSource[1]='video/tinkering.webm';
+	var videoCount = videoSource.length;
+	document.getElementById("myVideo").setAttribute("src",videoSource[0]);
+	
+	function videoPlay(videoNum) {
+		document.getElementById("myVideo").setAttribute("src",videoSource[videoNum]);
+		document.getElementById("myVideo").load();
+		document.getElementById("myVideo").play();
+    }
+	
+	document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+	
+	var i=1;
+	function myHandler() {
+		videoPlay(i);
+		if (i >= (videoCount-1)) {
+			i = 0;
+		} else {
+			i++;
+		}
+	}
+	
+    </script>
+ </body>
+</html>
